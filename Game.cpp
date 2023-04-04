@@ -32,14 +32,16 @@ void Game::updateSFMLEvents()
 
 void Game::update()
 {
+    this->updateSFMLEvents();
 }
 
 void Game::render()
 {
+    this->window->clear();
 
-    window.clear();
-    window.draw(shape);
-    window.display();
+
+
+    this->window->display();
 }
 
 void Game::run()
