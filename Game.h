@@ -1,14 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
-
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include "GameState.h"
 
 class Game
 {
@@ -17,8 +9,15 @@ private:
 	sf::RenderWindow* window;
 	sf::Event sfEvent;
 
+	//Delta time
+	sf::Clock dtClock;
+	float dt;
+
+	std::stack<State*> states;
+
 	//Initialization
 	void initWindow();
+	void initStates();
 
 public:
 	//Cunstructors/Destructors
@@ -30,5 +29,7 @@ public:
 	void update();
 	void render();
 	void run();
+	void updateDt();
+	
 };
 
