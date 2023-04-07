@@ -53,6 +53,12 @@ Game::~Game()
 }
 
 //Functions
+
+void Game::endApplication()
+{
+    std::cout << "Ending Application" << std::endl;
+}
+
 void Game::updateSFMLEvents()
 {
     while (this->window->pollEvent(this->sfEvent))
@@ -67,7 +73,22 @@ void Game::update()
     this->updateSFMLEvents();
 
     if (!this->states.empty())
+    {
         this->states.top()->update(this->dt);
+
+        if (this->states.top()->getQuiut())
+        {
+            this->states.top()->endState();
+            delete this->states.top();
+            this->states.pop();
+        }
+    }
+    //Application end
+    else
+    {
+        this->endApplication();
+        this->window->close();
+    }
 }
 
 void Game::render()
@@ -89,6 +110,8 @@ void Game::run()
         this->render();
     }
 }
+
+
 
 void Game::updateDt()
 {

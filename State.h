@@ -1,34 +1,25 @@
 #pragma once
 
-#include <fstream>
-#include <sstream>
-
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
-
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <stack>
-#include <map>
-#include <vector>
+#include "Entity.h"
 
 class State
 {
-private:
+protected:
 	sf::RenderWindow* window;
 	std::vector<sf::Texture> textures;
+	bool quit;
 
 public:
 	State(sf::RenderWindow* window);
 	virtual ~State();
 
+	const bool& getQuiut() const;
+
+	virtual void cheeckForQuit();
 	virtual void endState() = 0;
 
+	virtual void updateKeyBinds(const float& dt) = 0;
 	virtual void update(const float& dt) = 0;
-	virtual void render(sf::RenderTarget* target = nullptr) = 0;
+	virtual void render(sf::RenderTarget* target = NULL) = 0;
 };
 

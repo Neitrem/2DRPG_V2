@@ -10,17 +10,27 @@ GameState::~GameState()
 
 }
 
+
+
 void GameState::endState()
 {
+	std::cout << "GameState ends!" << std::endl;
+}
 
+void GameState::updateKeyBinds(const float& dt)
+{
+	this->cheeckForQuit();
 }
 
 //Functions
 void GameState::update(const float& dt)
 {
-	std::cout << "Hello from GameState" << std::endl;
+	this->updateKeyBinds(dt);
+	
+	this->player.update(dt);
 }
 
 void GameState::render(sf::RenderTarget* target)
 {
+	this->player.render(this->window);
 }
