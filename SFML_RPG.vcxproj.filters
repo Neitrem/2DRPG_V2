@@ -14,40 +14,40 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="States">
-      <UniqueIdentifier>{95854cd6-03a6-48c9-ad22-007b8148b568}</UniqueIdentifier>
+      <UniqueIdentifier>{249fd62c-9f2b-48e9-8b91-f602d6539de7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Entities">
-      <UniqueIdentifier>{52adde4b-a78d-44e0-b246-0bb9babda926}</UniqueIdentifier>
+      <UniqueIdentifier>{ca1a1bfe-cd22-4360-921a-77b981484548}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
+    <ClCompile Include="src\States\GameState.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="src\States\State.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="src\Entities\Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
+    <ClInclude Include="src\States\GameState.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
+    <ClInclude Include="src\States\State.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="src\Entities\Entity.h">
       <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
