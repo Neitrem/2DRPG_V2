@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Entities;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\States;$(SolutionDir)\src;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;$(SolutionDir)\External\SFML\include;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
