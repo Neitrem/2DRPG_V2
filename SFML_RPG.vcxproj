@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Entities;$(SolutionDir)\src\States;$(SolutionDir)\src;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Entities;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\States;$(SolutionDir)\src;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,13 +136,17 @@
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Resource Files\Button.cpp" />
     <ClCompile Include="src\States\GameState.cpp" />
+    <ClCompile Include="src\States\MainMenuState.cpp" />
     <ClCompile Include="src\States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Resource Files\Button.h" />
     <ClInclude Include="src\States\GameState.h" />
+    <ClInclude Include="src\States\MainMenuState.h" />
     <ClInclude Include="src\States\State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

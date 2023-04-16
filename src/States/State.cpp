@@ -20,8 +20,15 @@ const bool& State::getQuiut() const
 
 void State::cheeckForQuit()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE_STATE"))))
 	{
 		this->quit = true;
 	}
+}
+
+void State::updateMousePositions()
+{
+	this->mousePosScreen = sf::Mouse::getPosition();
+	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
+	this->mousePosView = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
 }
