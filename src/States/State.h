@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "PLayer.h"
 
 class State
 {
@@ -19,7 +19,7 @@ protected:
 
 
 	//Resources
-	std::vector<sf::Texture> textures;
+	std::map<std::string, sf::Texture> textures;
 
 	//Functions
 
@@ -30,8 +30,8 @@ public:
 
 	const bool& getQuiut() const;
 
-	virtual void cheeckForQuit();
-	virtual void endState() = 0;
+	//virtual void updateEndState() = 0;
+	void endState();
 
 	virtual void updateMousePositions();
 	virtual void updateInput(const float& dt) = 0;

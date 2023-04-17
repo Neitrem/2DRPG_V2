@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;$(SolutionDir)\External\SFML\include;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;$(SolutionDir)\External\SFML\include;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\MovementComponent.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
+    <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Resource Files\Button.cpp" />
@@ -142,7 +144,9 @@
     <ClCompile Include="src\States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\MovementComponent.h" />
     <ClInclude Include="src\Entities\Entity.h" />
+    <ClInclude Include="src\Entities\Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Resource Files\Button.h" />
     <ClInclude Include="src\States\GameState.h" />
