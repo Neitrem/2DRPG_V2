@@ -21,21 +21,24 @@ const sf::Vector2f& MovementComponent::getVelocity() const
 }
 
 //Functions
+const bool MovementComponent::getState(const short unsigned state) const
+{
+	switch (state)
+	{
+	case IDLE:
+		break;
+	case MOVING:
+		break;
+	default:
+		break;
+	}
+}
+
 
 void MovementComponent::move(const float dir_x, const float dir_y, const float& dt)
 {
 	//Acceleration
-	this->velocity.x += this->acceleration * dir_x;
-
-	if (this->velocity.x > 0.f) //Check for right
-	{
-		
-	}
-	else if (this->velocity.x < 0.f) //Check for right
-	{
-		
-	}
-	
+	this->velocity.x += this->acceleration * dir_x;	
 
 	this->velocity.y += this->acceleration * dir_y;
 }

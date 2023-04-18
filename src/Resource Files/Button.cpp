@@ -10,7 +10,6 @@ Button::Button(float x, float y, float width, float height,
 	this->shape.setPosition(sf::Vector2f(x, y));
 	this->shape.setSize(sf::Vector2f(width, height));
 	this->shape.setFillColor(idleColor);
-	//this->shape.setOrigin(round(this->shape.getGlobalBounds().width / 2.f, this->shape.getGlobalBounds().width / 2.f));
 
 	this->font = font;
 	this->text.setFont(*this->font);

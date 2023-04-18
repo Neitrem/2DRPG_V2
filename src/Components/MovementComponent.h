@@ -16,6 +16,20 @@
 #include <map>
 #include <vector>
 
+enum movement_state {
+	IDLE = 0,
+	IDLE_DOWN,
+	IDLE_LEFT,
+	IDLE_RIGHT,
+	IDLE_UP,
+	MOVING,
+	MOVING_DOWN,
+	MOVING_LEFT,
+	MOVING_RIGHT,
+	MOVING_UP
+
+};
+
 class MovementComponent
 {
 private:
@@ -37,7 +51,10 @@ public:
 	//Accessors
 	const sf::Vector2f& getVelocity() const;
 
+
 	//Functions
+	const bool getState(const short unsigned state) const;
+
 
 	void move(const float dir_x, const float dir_y, const float& dt);
 	void update(const float& dt);

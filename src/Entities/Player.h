@@ -14,9 +14,10 @@ protected:
     void initComponents();
 public:
     //Constructors / Destructors
-    Player(float width, float height, float x, float y, sf::Texture& texture);
+    Player(float width, float height, float x, float y, sf::Texture& texture_sheet);
     virtual ~Player();
 
     //Functions
+    virtual void update(const float& dt);
 };
 
