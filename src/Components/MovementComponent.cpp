@@ -29,13 +29,11 @@ void MovementComponent::move(const float dir_x, const float dir_y, const float& 
 
 	if (this->velocity.x > 0.f) //Check for right
 	{
-		if (this->velocity.x > this->maxVelocity)
-			this->velocity.x = this->maxVelocity;
+		
 	}
 	else if (this->velocity.x < 0.f) //Check for right
 	{
-		if (this->velocity.x < -this->maxVelocity)
-			this->velocity.x = -this->maxVelocity;
+		
 	}
 	
 
@@ -44,18 +42,54 @@ void MovementComponent::move(const float dir_x, const float dir_y, const float& 
 
 void MovementComponent::update(const float& dt)
 {
-	//Deceleration
-	if (this->velocity.x > 0.f) //Check for right
+	//Deceleration and max velocity check
+
+	//X
+	if (this->velocity.x > 0.f) //Check for positive x
 	{
+		//Max velocity check
+		if (this->velocity.x > this->maxVelocity)
+			this->velocity.x = this->maxVelocity;
+
+		//Deceleration
 		this->velocity.x -= deceleration;
 		if (this->velocity.x < 0.f)
 			this->velocity.x = 0.f;
 	}
-	else if (this->velocity.x < 0.f) //Check for right
+	else if (this->velocity.x < 0.f) //Check for negative x
 	{
+		//Max velocity check
+		if (this->velocity.x < -this->maxVelocity)
+			this->velocity.x = -this->maxVelocity;
+
+		//Deceleraion
 		this->velocity.x += deceleration;
 		if (this->velocity.x > 0.f)
 			this->velocity.x = 0.f;
+	}
+
+	//Y
+	if (this->velocity.y > 0.f) //Check for positive y
+	{
+		//Max velocity check
+		if (this->velocity.y > this->maxVelocity)
+			this->velocity.y = this->maxVelocity;
+
+		//Deceleration
+		this->velocity.y -= deceleration;
+		if (this->velocity.y < 0.f)
+			this->velocity.y = 0.f;
+	}
+	else if (this->velocity.y < 0.f) //Check for negative y
+	{
+		//Max velocity check
+		if (this->velocity.y < -this->maxVelocity)
+			this->velocity.y = -this->maxVelocity;
+
+		//Deceleraion
+		this->velocity.y += deceleration;
+		if (this->velocity.y > 0.f)
+			this->velocity.y = 0.f;
 	}
 
 	//Final move

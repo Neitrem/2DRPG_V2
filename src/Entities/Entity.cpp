@@ -28,6 +28,11 @@ void Entity::createMovementComponent(const float maxVelocity, const float accele
 }
 
 //Functions
+void Entity::setSize(const float width, const float height)
+{
+	this->sprite.setScale(width / this->sprite.getGlobalBounds().width, height / this->sprite.getGlobalBounds().height);
+}
+
 void Entity::setPosition(const float x, const float y)
 {
 

@@ -28,13 +28,18 @@ private:
 	sf::Font* font;
 	sf::Text text;
 
+	sf::Color textiIdleColor;
+	sf::Color textHoverColor;
+	sf::Color textActiveColor;
+
 	sf::Color idleColor;
 	sf::Color hoverColor;
 	sf::Color activeColor;
 
 public:
 	Button(float x, float y, float width, float height,
-		sf::Font* font, std::string text,
+		sf::Font* font, std::string text, unsigned character_size,
+		sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_active_color,
 		sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
 	virtual ~Button();
 
