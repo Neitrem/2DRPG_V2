@@ -18,16 +18,18 @@
 
 enum movement_state {
 	IDLE = 0,
-	IDLE_DOWN,
-	IDLE_LEFT,
-	IDLE_RIGHT,
-	IDLE_UP,
 	MOVING,
 	MOVING_DOWN,
 	MOVING_LEFT,
 	MOVING_RIGHT,
 	MOVING_UP
+};
 
+enum moving_direction {
+	LEFT = 0,
+	RIGHT,
+	UP,
+	DOWN
 };
 
 class MovementComponent
@@ -38,6 +40,8 @@ private:
 	float maxVelocity;
 	float acceleration;
 	float deceleration;
+
+	int direction;
 
 	sf::Vector2f velocity;
 
@@ -50,10 +54,12 @@ public:
 
 	//Accessors
 	const sf::Vector2f& getVelocity() const;
+	const float& getMaxVelocity() const;
 
 
 	//Functions
-	const bool getState(const short unsigned state) const;
+	const bool getState(const short unsigned state);
+	const int getDirection();
 
 
 	void move(const float dir_x, const float dir_y, const float& dt);

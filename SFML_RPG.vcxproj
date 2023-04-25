@@ -134,23 +134,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Components\AnimationComponent.cpp" />
+    <ClCompile Include="src\Components\HitboxComponent.cpp" />
     <ClCompile Include="src\Components\MovementComponent.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Entities\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Resource Files\Button.cpp" />
+    <ClCompile Include="src\States\EditorState.cpp" />
     <ClCompile Include="src\States\GameState.cpp" />
     <ClCompile Include="src\States\MainMenuState.cpp" />
     <ClCompile Include="src\States\State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\AnimationComponent.h" />
+    <ClInclude Include="src\Components\HitboxComponent.h" />
     <ClInclude Include="src\Components\MovementComponent.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Resource Files\Button.h" />
+    <ClInclude Include="src\States\EditorState.h" />
     <ClInclude Include="src\States\GameState.h" />
     <ClInclude Include="src\States\MainMenuState.h" />
     <ClInclude Include="src\States\State.h" />

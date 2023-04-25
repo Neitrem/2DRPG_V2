@@ -54,7 +54,7 @@ void MainMenuState::initButtons()
 		sf::Color(255, 255, 255, 200), sf::Color(160, 160, 160, 250), sf::Color(58, 58, 58, 50),
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
 
-	this->buttons["EDITOR_STATE"] = new Button(100, 400, 180, 60,
+	this->buttons["RUN_EDITOR"] = new Button(100, 400, 180, 60,
 		&this->font, "Run Editor", 25,
 		sf::Color(255, 255, 255, 200), sf::Color(160, 160, 160, 250), sf::Color(58, 58, 58, 50),
 		sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
@@ -109,6 +109,17 @@ void MainMenuState::updateButtons()
 	{
 		this->states->push(new GameState(this->window, this->supportedKeys, this->states));
 	}
+
+	//Settings
+	if (this->buttons["SETTINGS"]->isPressed())
+	{
+		//this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+	}
+
+	if (this->buttons["RUN_EDITOR"]->isPressed())
+	{
+		this->states->push(new EditorState(this->window, this->supportedKeys, this->states));
+	}
 }
 
 void MainMenuState::update(const float& dt)
@@ -119,7 +130,7 @@ void MainMenuState::update(const float& dt)
 	this->updateButtons();
 }
 
-void MainMenuState::renderButtons(sf::RenderTarget* target)
+void MainMenuState::renderButtons(sf::RenderTarget& target)
 {
 	for (auto& it : this->buttons)
 	{
@@ -134,7 +145,7 @@ void MainMenuState::render(sf::RenderTarget* target)
 
 	target->draw(this->background);
 
-	this->renderButtons(target);
+	this->renderButtons(*target);
 
 	//REMOVE LATER
 	/*sf::Text mouseText;

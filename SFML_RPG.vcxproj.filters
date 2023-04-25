@@ -57,6 +57,12 @@
     <ClCompile Include="src\Components\AnimationComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\States\EditorState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\HitboxComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -84,6 +90,12 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\AnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\States\EditorState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\HitboxComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
