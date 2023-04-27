@@ -12,6 +12,7 @@ protected:
     //Initializers functions
     void initVariables();
     void initComponents();
+    void initAnimations();
 public:
     //Constructors / Destructors
     Player(float width, float height, float x, float y, sf::Texture& texture_sheet);

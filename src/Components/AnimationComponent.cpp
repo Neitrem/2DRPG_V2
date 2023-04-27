@@ -2,7 +2,7 @@
 
 //Constructors / Destructors
 AnimationComponent::AnimationComponent(sf::Sprite& sprite, sf::Texture& texture_sheet)
-	: sprite(sprite), textureSheet(texture_sheet), lastAnimation(NULL)
+	: sprite(sprite), textureSheet(texture_sheet), lastAnimation(NULL), currentAnimation(NULL)
 {
 
 }
@@ -27,7 +27,8 @@ std::string& AnimationComponent::getViewDirection()
 
 void AnimationComponent::addAnimation(const std::string key,
 	float animation_timer,
-	int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int heigh)
+	int start_frame_x, int start_frame_y, int frames_x, int frames_y,
+	int width, int heigh, const int priority_level)
 {
 
 	std::string directionName;
@@ -45,7 +46,9 @@ void AnimationComponent::addAnimation(const std::string key,
 	this->animations[key] = new Animation(
 		directionName, this->sprite, this->textureSheet,
 		animation_timer,
-		start_frame_x, start_frame_y, frames_x, frames_y, width, heigh
+		start_frame_x, start_frame_y, frames_x, frames_y, width, heigh,
+		priority_level
+		
 	);
 }
 
@@ -64,7 +67,11 @@ void AnimationComponent::play(const std::string key, const float& dt)
 		}
 	}
 
-	this->animations[key]->play(dt);
+	//If animation ended
+	if (this->animations[key]->play(dt))
+	{
+
+	}
 }
 
 void AnimationComponent::play(const std::string key, const float& dt, const float& movement_speed)
@@ -89,18 +96,23 @@ void AnimationComponent::play(const std::string key, const float& dt, const floa
 //Animation
 
 //Cunstructor
-AnimationComponent::Animation::Animation(std::string directionName, sf::Sprite& sprite, sf::Texture& texture_sheet,
-	float animation_timer,
-	int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height)
+AnimationComponent::Animation::Animation(
+		std::string directionName, sf::Sprite& sprite, sf::Texture& texture_sheet,
+		float animation_timer,
+		int start_frame_x, int start_frame_y, int frames_x, int frames_y,
+		int width, int height,
+		const int prioroty_level
+)
 	: sprite(sprite), textureSheet(texture_sheet),
 	animationTimer(animation_timer),
-	width(width), height(height)
+	width(width), height(height), isDone(false)
 {
 	this->timer = 0.f;
 	this->startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
 	this->currentRect = this->startRect;
 	this->endRect = sf::IntRect(frames_x * width, frames_y * height, width, height);
 	this->directionName = this->directionName;
+	this->priorityLevel = prioroty_level;
 
 	this->sprite.setTexture(this->textureSheet, true);
 	this->sprite.setTextureRect(this->startRect);
@@ -111,9 +123,10 @@ void AnimationComponent::Animation::reset()
 {
 	this->timer = this->animationTimer;
 	this->currentRect = this->startRect;
+	this->isDone = false;
 }
 
-void AnimationComponent::Animation::play(const float& dt)
+bool AnimationComponent::Animation::play(const float& dt)
 {
 	//Update timer
 	this->timer += 30.f * dt;
@@ -130,13 +143,16 @@ void AnimationComponent::Animation::play(const float& dt)
 		else // Reset
 		{
 			this->currentRect = this->startRect;
+			this->isDone = true;
 		}
 
 		this->sprite.setTextureRect(this->currentRect);
 	}
+
+	return this->isDone;
 }
 
-void AnimationComponent::Animation::play(const float& dt, float movement_speed)
+bool AnimationComponent::Animation::play(const float& dt, float movement_speed)
 {
 	//Update timer
 	if (movement_speed < 0.5f)
@@ -158,8 +174,11 @@ void AnimationComponent::Animation::play(const float& dt, float movement_speed)
 		else // Reset
 		{
 			this->currentRect = this->startRect;
+			this->isDone = true;
 		}
 
 		this->sprite.setTextureRect(this->currentRect);
 	}
+
+	return this->isDone;
 }
