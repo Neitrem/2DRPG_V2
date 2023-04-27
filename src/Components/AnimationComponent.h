@@ -10,35 +10,46 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+#include "Job.h"
+
 class AnimationComponent
 {
 private:
 	class Animation
 	{
+	private:
 	public:
 		//Variables
+
+		// Spite and texture stuff
 		sf::Sprite& sprite;
 		sf::Texture& textureSheet;
+
+		// Animation time stuff
 		float animationTimer;
 		float timer;
+
+		// Size of picture
 		int width;
 		int height;
-		std::string directionName;
-
+		
+		// State variables
 		bool isDone;
-
 		int priorityLevel;
+		std::string directionName;
+		std::vector<Job> animationJobs;
 
+		// Frames positions
 		sf::IntRect startRect;
 		sf::IntRect currentRect;
 		sf::IntRect endRect;
 		
-		//Constructors / Destructors
+		// Constructors / Destructors
 		Animation(
 			std::string directionName, sf::Sprite& sprite,
-			sf::Texture& textureSheet, float speed,
-			int start_x, int start_y, int end_x, int end_y,
-			int width, int height, const int priority_level
+			sf::Texture& textureSheet, std::vector<Job> animation_jobs,
+			float speed, int start_x, int start_y, int end_x, int end_y,
+			int width, int height, int priority_level
 		);
 
 		//Functions
@@ -54,24 +65,24 @@ private:
 	sf::Texture& textureSheet;
 	std::map<std::string, Animation*> animations;
 
-	Animation* lastAnimation;
+	Animation* lastAnimation; // Deprecated for now, not sure if it will be used
 	Animation* currentAnimation;
 protected:
 
 public:
-	//Constructors / Destructors
+	// Constructors / Destructors
 	AnimationComponent(sf::Sprite& sprite, sf::Texture& texture_sheet);
 	virtual ~AnimationComponent();
 
-	//Accessors
+	// Accessors
 	std::string& getViewDirection();
 
-	//Functions
+	// Functions
 	void addAnimation(
-		const std::string key,
+		const std::string key, std::vector<Job> animation_jobs,
 		float animation_timer,
 		int start_frame_x, int start_frame_y, int frames_x, int frames_y,
-		int width, int heigh, const int priority_level
+		int width, int heigh, int priority_level
 	);
 
 	void play(const std::string key, const float& dt);

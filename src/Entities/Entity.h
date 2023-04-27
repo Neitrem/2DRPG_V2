@@ -10,8 +10,10 @@ private:
 	void initVariables();
 
 protected:
+	// Variables
 	sf::Sprite sprite;
 	
+	// Components
 	HitboxComponent* hitboxComponent;
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;

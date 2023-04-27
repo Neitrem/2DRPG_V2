@@ -2,7 +2,7 @@
 
 //Constructors / Destructors
 AnimationComponent::AnimationComponent(sf::Sprite& sprite, sf::Texture& texture_sheet)
-	: sprite(sprite), textureSheet(texture_sheet), lastAnimation(NULL), currentAnimation(NULL)
+	: sprite(sprite), textureSheet(texture_sheet), currentAnimation(NULL)
 {
 
 }
@@ -19,16 +19,17 @@ AnimationComponent::~AnimationComponent()
 
 std::string& AnimationComponent::getViewDirection()
 {
-	return this->lastAnimation->directionName;
+	return this->currentAnimation->directionName;
 }
 
 
 //Function
 
-void AnimationComponent::addAnimation(const std::string key,
+void AnimationComponent::addAnimation(
+	const std::string key, std::vector<Job> animation_jobs,
 	float animation_timer,
 	int start_frame_x, int start_frame_y, int frames_x, int frames_y,
-	int width, int heigh, const int priority_level)
+	int width, int heigh, int priority_level)
 {
 
 	std::string directionName;
@@ -44,7 +45,7 @@ void AnimationComponent::addAnimation(const std::string key,
 	}
 	std::cout << directionName << std::endl;
 	this->animations[key] = new Animation(
-		directionName, this->sprite, this->textureSheet,
+		directionName, this->sprite, this->textureSheet, animation_jobs,
 		animation_timer,
 		start_frame_x, start_frame_y, frames_x, frames_y, width, heigh,
 		priority_level
@@ -54,42 +55,50 @@ void AnimationComponent::addAnimation(const std::string key,
 
 void AnimationComponent::play(const std::string key, const float& dt)
 {
-	if (this->lastAnimation != this->animations[key])
+	//Check for priority level
+	if (this->currentAnimation) // If it exist
 	{
-		if (this->lastAnimation == NULL)
+		if (this->currentAnimation->priorityLevel < this->animations[key]->priorityLevel) // If new animation has a higher priority
 		{
-			this->lastAnimation = this->animations[key];
+			this->currentAnimation->reset();
+			this->currentAnimation = this->animations[key];
 		}
-		else
-		{
-			this->lastAnimation->reset();
-			this->lastAnimation = this->animations[key];
-		}
+	}
+	else
+	{
+		this->currentAnimation = this->animations[key];
 	}
 
 	//If animation ended
 	if (this->animations[key]->play(dt))
 	{
-
+		this->currentAnimation = NULL;
 	}
 }
 
 void AnimationComponent::play(const std::string key, const float& dt, const float& movement_speed)
 {
-	if (this->lastAnimation != this->animations[key])
+	//Check for priority level
+	if (this->currentAnimation) // If it exist
 	{
-		if (this->lastAnimation == NULL)
+		if (this->currentAnimation->priorityLevel <= this->animations[key]->priorityLevel) // If new animation has a higher priority
 		{
-			this->lastAnimation = this->animations[key];
-		}
-		else
-		{
-			this->lastAnimation->reset();
-			this->lastAnimation = this->animations[key];
+			if (this->currentAnimation != this->animations[key])
+			{
+				this->currentAnimation->reset();
+			}
+			this->currentAnimation = this->animations[key];
 		}
 	}
+	else
+	{
+		this->currentAnimation = this->animations[key];
+	}
 
-	this->animations[key]->play(dt, abs(movement_speed) );
+	if (this->currentAnimation->play(dt, abs(movement_speed)))
+	{
+		this->currentAnimation = NULL;
+	}
 }
 
 
@@ -98,14 +107,14 @@ void AnimationComponent::play(const std::string key, const float& dt, const floa
 //Cunstructor
 AnimationComponent::Animation::Animation(
 		std::string directionName, sf::Sprite& sprite, sf::Texture& texture_sheet,
-		float animation_timer,
+		std::vector<Job> animation_jobs, float animation_timer,
 		int start_frame_x, int start_frame_y, int frames_x, int frames_y,
 		int width, int height,
-		const int prioroty_level
+		int prioroty_level
 )
 	: sprite(sprite), textureSheet(texture_sheet),
 	animationTimer(animation_timer),
-	width(width), height(height), isDone(false)
+	width(width), height(height), isDone(false), animationJobs(animation_jobs)
 {
 	this->timer = 0.f;
 	this->startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
@@ -124,6 +133,8 @@ void AnimationComponent::Animation::reset()
 	this->timer = this->animationTimer;
 	this->currentRect = this->startRect;
 	this->isDone = false;
+
+
 }
 
 bool AnimationComponent::Animation::play(const float& dt)

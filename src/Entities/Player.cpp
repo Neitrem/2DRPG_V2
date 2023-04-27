@@ -15,17 +15,17 @@ void Player::initAnimations()
 	////Loading animations
 	
 	//IDLE
-	this->animationComponent->addAnimation("IDLE_DOWN", 5.f, 0, 0, 4, 0, 48, 48, 0);
-	this->animationComponent->addAnimation("IDLE_LEFT", 5.f, 0, 1, 4, 1, 48, 48, 0);
-	this->animationComponent->addAnimation("IDLE_RIGHT", 5.f, 0, 2, 4, 2, 48, 48, 0);
-	this->animationComponent->addAnimation("IDLE_UP", 5.f, 0, 3, 4, 3, 48, 48, 0);
+	this->animationComponent->addAnimation("IDLE_DOWN", std::vector<Job> {}, 5.f, 0, 0, 4, 0, 48, 48, 0);
+	this->animationComponent->addAnimation("IDLE_LEFT", std::vector<Job> {}, 5.f, 0, 1, 4, 1, 48, 48, 0);
+	this->animationComponent->addAnimation("IDLE_RIGHT", std::vector<Job> {}, 5.f, 0, 2, 4, 2, 48, 48, 0);
+	this->animationComponent->addAnimation("IDLE_UP", std::vector<Job> {}, 5.f, 0, 3, 4, 3, 48, 48, 0);
 
 
 	//MOVING
-	this->animationComponent->addAnimation("WALK_DOWN", 1.5f, 0, 4, 7, 4, 48, 48, 0);
-	this->animationComponent->addAnimation("WALK_LEFT", 2.5f, 0, 5, 7, 5, 48, 48, 0);
-	this->animationComponent->addAnimation("WALK_RIGHT", 2.5f, 0, 6, 7, 6, 48, 48, 0);
-	this->animationComponent->addAnimation("WALK_UP", 1.5f, 0, 7, 7, 7, 48, 48, 0);
+	this->animationComponent->addAnimation("WALK_DOWN", std::vector<Job> {}, 1.5f, 0, 4, 7, 4, 48, 48, 0);
+	this->animationComponent->addAnimation("WALK_LEFT", std::vector<Job> {}, 2.5f, 0, 5, 7, 5, 48, 48, 0);
+	this->animationComponent->addAnimation("WALK_RIGHT", std::vector<Job> {}, 2.5f, 0, 6, 7, 6, 48, 48, 0);
+	this->animationComponent->addAnimation("WALK_UP", std::vector<Job> {}, 1.5f, 0, 7, 7, 7, 48, 48, 0);
 }
 
 //Constructors / Destructors

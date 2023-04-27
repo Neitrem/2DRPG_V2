@@ -9,6 +9,7 @@ private:
 protected:
     //Variables
 
+
     //Initializers functions
     void initVariables();
     void initComponents();
