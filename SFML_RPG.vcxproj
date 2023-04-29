@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Weapons;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;$(SolutionDir)\External\SFML\include;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\Components;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Weapons;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\External\SFML\include;$(SolutionDir)\External\SFML\include;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\src;$(SolutionDir)\src;$(SolutionDir)\src\States;$(SolutionDir)\src\Resource Files;$(SolutionDir)\src\Entities;$(SolutionDir)\External\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +145,8 @@
     <ClCompile Include="src\States\GameState.cpp" />
     <ClCompile Include="src\States\MainMenuState.cpp" />
     <ClCompile Include="src\States\State.cpp" />
+    <ClCompile Include="src\Weapons\Job.cpp" />
+    <ClCompile Include="src\Weapons\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\AnimationComponent.h" />
@@ -158,6 +160,8 @@
     <ClInclude Include="src\States\GameState.h" />
     <ClInclude Include="src\States\MainMenuState.h" />
     <ClInclude Include="src\States\State.h" />
+    <ClInclude Include="src\Weapons\Job.h" />
+    <ClInclude Include="src\Weapons\Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

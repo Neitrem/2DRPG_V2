@@ -1,9 +1,10 @@
 #pragma once
 
+#include "Weapon.h"
 
 enum job_types {
 	START_JOB = 0,
-	POCESS_JOB,
+	PROCESS_JOB,
 	CLEARING_JOB
 };
 
@@ -12,16 +13,14 @@ class Job
 {
 public:
 	// Constructor / Destructor
-	Job(int job_type, void (*job_function) ())
+	Job(int job_type, Weapon* current_weapon)
 	{
 		this->jobType = job_type;
-		this->jobFunction = job_function;
+		this->currentWeapon = current_weapon;
 	}
 	virtual ~Job() {}
 
 	// Variables
 	int jobType;
-
-	// Functions
-	void (*jobFunction)();
+	Weapon* currentWeapon;
 };

@@ -58,9 +58,12 @@ void AnimationComponent::play(const std::string key, const float& dt)
 	//Check for priority level
 	if (this->currentAnimation) // If it exist
 	{
-		if (this->currentAnimation->priorityLevel < this->animations[key]->priorityLevel) // If new animation has a higher priority
+		if (this->currentAnimation->priorityLevel <= this->animations[key]->priorityLevel) // If new animation has a higher priority
 		{
-			this->currentAnimation->reset();
+			if (this->currentAnimation != this->animations[key])
+			{
+				this->currentAnimation->reset();
+			}
 			this->currentAnimation = this->animations[key];
 		}
 	}
@@ -70,7 +73,7 @@ void AnimationComponent::play(const std::string key, const float& dt)
 	}
 
 	//If animation ended
-	if (this->animations[key]->play(dt))
+	if (this->currentAnimation->play(dt))
 	{
 		this->currentAnimation = NULL;
 	}
@@ -132,14 +135,19 @@ void AnimationComponent::Animation::reset()
 {
 	this->timer = this->animationTimer;
 	this->currentRect = this->startRect;
-	this->isDone = false;
+	this->isDone = true;
 
-
+	for (auto it : this->animationJobs)
+	{
+		if (it.jobType == CLEARING_JOB)
+			it.currentWeapon->endAtack();
+	}
 }
 
 bool AnimationComponent::Animation::play(const float& dt)
 {
 	//Update timer
+	this->isDone = false;
 	this->timer += 30.f * dt;
 	if (this->timer >= this->animationTimer)
 	{
@@ -153,8 +161,7 @@ bool AnimationComponent::Animation::play(const float& dt)
 		}
 		else // Reset
 		{
-			this->currentRect = this->startRect;
-			this->isDone = true;
+			this->reset();
 		}
 
 		this->sprite.setTextureRect(this->currentRect);
@@ -170,7 +177,7 @@ bool AnimationComponent::Animation::play(const float& dt, float movement_speed)
 	{
 		movement_speed = 0.5;
 	}
-
+	this->isDone = false;
 	this->timer += (movement_speed / 10.f) * dt;
 	if (this->timer >= this->animationTimer)
 	{  
@@ -184,8 +191,7 @@ bool AnimationComponent::Animation::play(const float& dt, float movement_speed)
 		}
 		else // Reset
 		{
-			this->currentRect = this->startRect;
-			this->isDone = true;
+			this->reset();
 		}
 
 		this->sprite.setTextureRect(this->currentRect);

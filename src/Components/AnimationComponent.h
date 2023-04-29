@@ -10,6 +10,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+#include "Weapon.h"
 #include "Job.h"
 
 class AnimationComponent
@@ -65,7 +66,7 @@ private:
 	sf::Texture& textureSheet;
 	std::map<std::string, Animation*> animations;
 
-	Animation* lastAnimation; // Deprecated for now, not sure if it will be used
+	//Animation* lastAnimation; // Deprecated for now, not sure if it will be used
 	Animation* currentAnimation;
 protected:
 
